@@ -1,0 +1,15 @@
+[2026-06-26 12:36:17] INFO: Swagger UI enabled at /api-docs (development only, protected by Basic Auth)
+[2026-06-26 12:36:17] INFO: [DEVELOPMENT] Backend server & Socket.io running on port 3001
+[2026-06-26 12:36:18] INFO: Database connected, tables 'users' and 'messages' are ready.
+[2026-06-26 14:48:55] INFO: Swagger UI enabled at /api-docs (development only, protected by Basic Auth)
+[2026-06-26 14:48:55] INFO: [DEVELOPMENT] Backend server & Socket.io running on port 3001
+[2026-06-26 14:48:55] INFO: Database connected, tables 'users' and 'messages' are ready.
+[2026-07-03 09:26:06] INFO: Swagger UI enabled at /api-docs (development only, protected by Basic Auth)
+[2026-07-03 09:26:06] INFO: [DEVELOPMENT] Backend server & Socket.io running on port 3001
+[2026-07-03 09:26:06] INFO: Database connected, tables 'users' and 'messages' are ready.
+[2026-07-03 10:04:30] INFO: Swagger UI enabled at /api-docs (development only, protected by Basic Auth)
+[2026-07-03 10:04:30] INFO: [DEVELOPMENT] Backend server & Socket.io running on port 3001
+[2026-07-03 10:04:30] INFO: Database connected, tables 'users' and 'messages' are ready.
+[2026-09-08 07:58:15] INFO: Swagger UI enabled at /api-docs (development only, protected by Basic Auth)
+[2026-09-08 07:58:15] INFO: [DEVELOPMENT] Backend server & Socket.io running on port 3001
+[2026-09-08 07:58:15] INFO: Database connected, tables 'users' and 'messages' are ready.

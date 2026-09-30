@@ -1,0 +1,27 @@
+[2026-06-26 12:38:03] ERROR: [FRONTEND] Error loading messages  - Request aborted
+[2026-06-26 12:38:03] INFO: [FRONTEND] Frontend application started
+[2026-06-26 13:21:19] INFO: [FRONTEND] Frontend application started
+[2026-06-26 13:22:36] INFO: [FRONTEND] Frontend application started
+[2026-06-26 14:51:17] INFO: [FRONTEND] Frontend application started
+[2026-06-26 15:16:02] INFO: [FRONTEND] Frontend application started
+[2026-06-26 15:16:05] INFO: [FRONTEND] Frontend application started
+[2026-06-26 15:25:11] INFO: [FRONTEND] Frontend application started
+[2026-06-26 18:19:49] INFO: [FRONTEND] Frontend application started
+[2026-06-26 18:19:49] ERROR: [FRONTEND] Error loading messages  - Request aborted
+[2026-06-27 14:07:18] INFO: [FRONTEND] Frontend application started
+[2026-07-03 09:27:02] INFO: [FRONTEND] Frontend application started
+[2026-07-03 09:27:10] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password
+[2026-07-03 09:27:14] ERROR: [FRONTEND] Auth failed for admin1: Invalid username or password
+[2026-07-03 09:27:18] INFO: [FRONTEND] User admin1 successfully logged in
+[2026-07-03 09:27:33] INFO: [FRONTEND] User admin1 updated message ID: 7
+[2026-07-03 09:27:36] INFO: [FRONTEND] User logged out
+[2026-07-03 10:05:01] INFO: [FRONTEND] Frontend application started
+[2026-07-03 16:00:22] INFO: [FRONTEND] Frontend application started
+[2026-09-08 08:00:49] INFO: [FRONTEND] Frontend application started
+[2026-09-08 08:00:58] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password
+[2026-09-08 08:01:01] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password
+[2026-09-08 08:01:03] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password
+[2026-09-08 08:01:31] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password
+[2026-09-08 08:01:33] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password
+[2026-09-08 08:01:35] INFO: [FRONTEND] Frontend application started
+[2026-09-08 08:01:40] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password

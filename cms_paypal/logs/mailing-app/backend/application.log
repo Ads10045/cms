@@ -1,0 +1,10 @@
+[2026-06-26 12:39:37] INFO: Mailing Server running on port 3002
+[2026-06-26 12:45:38] INFO: No SMTP config detected or using placeholders. Creating temporary test SMTP account on Ethereal...
+[2026-06-26 12:45:41] INFO: Test email sent. View it at: https://ethereal.email/message/aj5mY6tu2Pi7wRBDaj5mZYtyfEwQgBVjAAAAAU4l8ORrwZAaggjcZObFs5M
+[2026-06-26 12:55:19] INFO: Mailing Server running on port 3002
+[2026-06-26 12:56:58] ERROR: SMTP sending error: Invalid login: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 5b1f17b1804b1-4926c02081bsm37355745e9.0 - gsmtp
+[2026-06-26 13:07:31] INFO: Mailing Server running on port 3002
+[2026-06-26 13:17:41] INFO: Email successfully sent to abachyouness@gmail.com. Message ID: <f18ccbd9-ae29-5d3b-2fe9-bcfa164f73b9@gmail.com>
+[2026-06-26 13:20:39] INFO: Email successfully sent to YOUNESS.ABACH1@ibm.com. Message ID: <b4b8b713-5513-42af-23f4-a6a92ce13646@gmail.com>
+[2026-07-03 09:26:07] INFO: Mailing Server running on port 3002

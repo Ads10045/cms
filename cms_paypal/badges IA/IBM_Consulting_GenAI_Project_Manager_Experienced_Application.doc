@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    a { color: #0000FF; text-decoration: underline; }
+    code { background-color: #FFFF00; padding: 2px 4px; border-radius: 3px; font-family: monospace; color: #000; font-size: 0.85em; }
+    body, h1, h2, h3, p, li { font-family: Arial, sans-serif; }
+</style>
+<h1>IBM Consulting – Generative &amp; Agentic AI Certification Application</h1>
+<h2>Badge Application: Project Manager – Experienced Level</h2>
+<p><strong>Applicant:</strong> Youness ABACH – Senior AI Project Manager &amp; Delivery Lead<br><strong>Certification Track:</strong> IBM Consulting - Generative &amp; Agentic AI - Project Manager - Experienced<br><strong>Project:</strong> VoiceStock AI (IBM watsonx.ai, Granite 3.0, Agentic Tool Calling, IBM Consulting Advantage &amp; Governance)<br><strong>Date:</strong> September 2026 / September 2024  </p>
+<hr>
+<h3>📊 Summary of Project Management Responses &amp; Character Count Validation</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Form Field</th>
+<th align="center">Max Characters</th>
+<th align="center">Actual Characters</th>
+<th align="center">Compliance Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>1. Client generative or agentic AI experience input*</strong></td>
+<td align="center">1,000</td>
+<td align="center"><strong>951</strong></td>
+<td align="center">✅ Validated</td>
+</tr>
+<tr>
+<td align="left"><strong>2. watsonx or Strategic Partner experience*</strong></td>
+<td align="center">1,000</td>
+<td align="center"><strong>935</strong></td>
+<td align="center">✅ Validated</td>
+</tr>
+<tr>
+<td align="left"><strong>3. Work Products or Deliverables*</strong></td>
+<td align="center">3,000</td>
+<td align="center"><strong>1844</strong></td>
+<td align="center">✅ Validated</td>
+</tr>
+<tr>
+<td align="left"><strong>4. Approach, Methods, and Tools*</strong></td>
+<td align="center">1,000</td>
+<td align="center"><strong>898</strong></td>
+<td align="center">✅ Validated</td>
+</tr>
+<tr>
+<td align="left"><strong>5. Management of Risks and AI Ethical Concerns*</strong></td>
+<td align="center">1,000</td>
+<td align="center"><strong>997</strong></td>
+<td align="center">✅ Validated</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>1. Generative or agentic AI Client or Project</h2>
+<h3>Field: <code>Client generative or agentic AI experience input*</code></h3>
+<blockquote>
+<p><strong>Official Prompt:</strong> Describe the client need or business problem addressed using generative or agentic AI. If a client, share client name, dates, and project objectives. If not a client, describe the internal AI project, workshop, or similar experience for which you developed project management work products or deliverables.<br><em>(Limit: 1,000 characters | Count: 951 characters)</em></p>
+</blockquote>
+<h4>💡 Explication en Français (Perspective Chef de Projet / Delivery Lead)</h4>
+<p>Cette section met en avant le rôle de pilotage et d&#39;alignement stratégique du Project Manager :</p>
+<ul>
+<li><strong>Rôle PM :</strong> Lead Delivery du projet VoiceStock AI dans le cadre de la certification Stand &amp; Deliver.</li>
+<li><strong>Problématique Métier :</strong> Goulet d&#39;étranglement opérationnel dans les entrepôts (&gt;3 min par consultation sur terminal fixe), causant retards d&#39;expédition et risques de rupture.</li>
+<li><strong>Pilotage &amp; Résultats :</strong> Conduite d&#39;une équipe agile multidisciplinaire sur un cycle de 4 semaines, livrée dans les délais et le budget. Réduction du temps de cycle de 85% (&lt;5 secondes), 100% de validation en recette UAT.</li>
+</ul>
+<h4>📋 Exact Text to Copy-Paste into Application Field:</h4>
+<pre><code class="language-text">Project: VoiceStock AI – Agentic AI Inventory Assistant (IBM Consulting GenAI Stand &amp; Deliver, 2024). Role: Senior AI Project Manager &amp; Delivery Lead.
+
+Client Need &amp; Business Problem:
+In industrial distribution centers, logistics personnel operating heavy equipment suffered from severe productivity bottlenecks due to manual, tethered ERP data lookups. Operators spent over 3 minutes per inventory inquiry, causing dispatch delays, data entry inaccuracies, and uncoordinated stockout escalations across warehouses.
+
+Project Management Objectives &amp; Outcomes:
+I led the end-to-end delivery of VoiceStock AI, managing a cross-functional agile squad of AI engineers, UX designers, and supply chain SMEs. Delivered on time and within budget over a 4-week sprint cycle. The solution achieved an 85% reduction in lookup cycle times (down to &lt;5 seconds), zero critical stockouts, and 100% User Acceptance Testing (UAT) approval from operational stakeholders.
+</code></pre>
+<hr>
+<h2>2. watsonx or Strategic Partner Experience</h2>
+<h3>Field: <code>watsonx or Strategic Partner experience*</code></h3>
+<blockquote>
+<p><strong>Official Prompt:</strong> How have you used or been impacted by watsonx and/or Strategic Partner products or functionality to achieve generative or agentic AI outcomes? Please identify the product and how it was used in an AI context.<br><em>(Limit: 1,000 characters | Count: 935 characters)</em></p>
+</blockquote>
+<h4>💡 Explication en Français (Perspective Chef de Projet / Delivery Lead)</h4>
+<p>Cette section montre comment le PM a planifié, jalonné et mesuré l&#39;intégration des briques IBM watsonx :</p>
+<ol>
+<li><strong>Pilotage des SLA watsonx.ai &amp; Granite 3.0 :</strong> Suivi des critères de performance (NFRs) garantissant une latence &lt;20 ms et 0 hallucination.</li>
+<li><strong>Gouvernance des Jalons Agentiques :</strong> Découpage du backlog en 3 sprints clairs (Text-to-SQL en Sprint 1, Scan caméra en Sprint 2, Restock automatique en Sprint 3).</li>
+<li><strong>Traçabilité watsonx.governance :</strong> Intégration des Factsheets (99,6% de fidélité) et des validations de conformité Granite Guardian dans les revues de sprint.</li>
+</ol>
+<h4>📋 Exact Text to Copy-Paste into Application Field:</h4>
+<pre><code class="language-text">As Project Manager, I directed the integration of IBM watsonx enterprise capabilities into the delivery roadmap:
+
+1. watsonx.ai &amp; Granite 3.0 Delivery: Managed sprint deliverables integrating Granite 3.0 via ibm-watsonx-ai SDK. Monitored model inference SLAs, ensuring deterministic greedy decoding (temperature=0.0) met our non-functional requirement of &lt;20ms latency and zero SQL hallucinations.
+
+2. Agentic Milestone Governance: Supervised the phased delivery of agentic workflows, prioritizing core Text-to-SQL querying in Sprint 1, computer vision webcam barcode scanning in Sprint 2, and autonomous restock email execution in Sprint 3.
+
+3. watsonx.governance Tracking: Integrated automated AI governance milestones into Jira/Core Method tracking. Factsheets reported model lineage and a 99.6% faithfulness score. Deployed Granite Guardian guardrails, ensuring compliance sign-offs for data privacy and role-based security (RBAC).
+</code></pre>
+<hr>
+<h2>3. Application, Work Product, or Deliverable</h2>
+<h3>Field: <code>Work Products or Deliverables*</code></h3>
+<blockquote>
+<p><strong>Official Prompt:</strong> Describe in detail the project management deliverables and work products that you created that support achievement of project AI outcomes.<br><em>(Limit: 3,000 characters | Count: 1844 characters)</em></p>
+</blockquote>
+<h4>💡 Explication en Français (Perspective Chef de Projet / Delivery Lead)</h4>
+<p>C&#39;est la section majeure détaillant les livrables concrets de gestion de projet (PMM) produits :</p>
+<ol>
+<li><strong>Charte de Projet &amp; Baseline du Périmètre :</strong> Matrice RACI des parties prenantes, définition des exigences non-fonctionnelles et gestion des changements.</li>
+<li><strong>Backlog Agile &amp; WBS (Work Breakdown Structure) :</strong> Plan de release sur 4 sprints géré sous Jira avec Core Method (Fondations -&gt; Multimodal Edge -&gt; Agentic Tooling &amp; RBAC -&gt; Hardening &amp; UAT).</li>
+<li><strong>Registre des Risques AI &amp; Éthique (RAID Log) :</strong> Identification proactive des risques (injections de prompt, fuite PII, hallucinations) et mise en place de sas de validation humaine.</li>
+<li><strong>Protocole de Recette UAT &amp; Cahier de Recette :</strong> 45 scénarios opérationnels testés avec 12 utilisateurs, validés à 100% sans anomalie bloquante.</li>
+<li><strong>Dossier de Clôture &amp; Dashboard de Valeur :</strong> Bilan ROI (-85% de temps de cycle) et package de soutenance pour Red Hat OpenShift.</li>
+</ol>
+<h4>📋 Exact Text to Copy-Paste into Application Field:</h4>
+<pre><code class="language-text">Project Management Deliverables &amp; Work Products Created:
+
+1. Project Charter &amp; Scope Baseline:
+Authored the Project Charter defining project vision, critical path milestones, stakeholder RACI matrix, and Non-Functional Requirements (NFRs: sub-second latency, 99.5% accuracy, hands-free operation). Managed scope variance through structured change control.
+
+2. Agile Sprint Backlog &amp; WBS (Work Breakdown Structure):
+Constructed a 4-week Agile release plan utilizing IBM Core Method and Jira:
+- Sprint 1 (Foundation): Relational schema design, ibm-watsonx-ai SDK integration, zero-shot Text-to-SQL baseline.
+- Sprint 2 (Multimodal Edge): Integration of Web Speech API voice capture, real-time table sync, and PC webcam optical barcode scanner.
+- Sprint 3 (Agentic Tooling &amp; RBAC): Automated supplier email restock dispatch, Human-in-the-Loop validation modal, and role segregation (Admin vs Standard User).
+- Sprint 4 (Governance &amp; Hardening): Granite Guardian safety filtering, watsonx.governance Factsheets validation, and UAT sign-off.
+
+3. AI Risk &amp; Ethics Governance Register (RACI Matrix):
+Created an AI-specific Risk, Assumptions, Issues, and Dependencies (RAID) log addressing prompt injection threats, PII exposure in supplier logs, and model hallucination risks. Mandated Human-in-the-Loop gates before purchase order transmissions.
+
+4. User Acceptance Testing (UAT) &amp; Operational Handover Playbook:
+Orchestrated UAT testing with 12 warehouse personas across 45 operational scenarios (voice lookups, barcode reading, restock alerts), achieving a 100% acceptance score and zero critical defects.
+
+5. Executive Showcase &amp; Stand &amp; Deliver Package:
+Produced the project closeout report, cost-benefit realization dashboard (showing 85% cycle time gain), and an 8-minute executive video demonstrating commercial readiness on Red Hat OpenShift.
+</code></pre>
+<hr>
+<h2>4. Approach, Methods, and Tools</h2>
+<h3>Field: <code>Approach, Methods, and Tools*</code></h3>
+<blockquote>
+<p><strong>Official Prompt:</strong> How did you approach project management using IBM tools, techniques, and/or methods (e.g., IBM Consulting Advantage, Core Method, IBM Garage, etc.)?<br><em>(Limit: 1,000 characters | Count: 898 characters)</em></p>
+</blockquote>
+<h4>💡 Explication en Français (Perspective Chef de Projet / Delivery Lead)</h4>
+<p>Cette section illustre l&#39;application des méthodologies officielles d&#39;IBM Consulting :</p>
+<ol>
+<li><strong>IBM Garage Delivery :</strong> Animation des cérémonies agiles (stand-ups quotidiens, sprint plannings, démos de fin d&#39;itération) pour maximiser la vélocité.</li>
+<li><strong>IBM Consulting Advantage :</strong> Accélération de l&#39;équipe de développement de +40% grâce aux assistants IA (génération de prompts, tests unitaires, scaffolding), économisant 80 heures de squad.</li>
+<li><strong>Gouvernance Core Method &amp; QAR :</strong> Revues de qualité formelles (Quality Assurance Reviews), tableaux de bord d&#39;avancement pour le management et préparation au déploiement OpenShift.</li>
+</ol>
+<h4>📋 Exact Text to Copy-Paste into Application Field:</h4>
+<pre><code class="language-text">I applied the IBM Core Method and IBM Consulting Advantage delivery framework:
+
+1. IBM Garage Delivery Model: Facilitated Co-Create discovery sprints to align business KPIs with technical feasibility. Managed daily stand-ups, iteration planning, and sprint reviews, ensuring fast feedback loops with logistics stakeholders.
+
+2. IBM Consulting Advantage Acceleration: Mandated the adoption of IBM Consulting Advantage Generative AI Assistants across the development team. Accelerated prompt engineering, code scaffolding, and test script generation by 40%, saving 80 squad hours and de-risking our critical path.
+
+3. Core Method Milestone Governance: Enforced formal IBM Quality Assurance Reviews (QAR), weekly status reporting to executive leadership, and sprint burn-down tracking. Ensured architectural alignment with Red Hat OpenShift deployment standards for scalable enterprise client rollout.
+</code></pre>
+<hr>
+<h2>5. Management of Risks and Ethical Concerns</h2>
+<h3>Field: <code>Management of Risks and AI Ethical Concerns*</code></h3>
+<blockquote>
+<p><strong>Official Prompt:</strong> What types of risks and ethical concerns exist, and how did you address these risks? You should describe how you used IBM&#39;s approach to Trustworthy AI, AI Ethics, and governance.<br><em>(Limit: 1,000 characters | Count: 997 characters)</em></p>
+</blockquote>
+<h4>💡 Explication en Français (Perspective Chef de Projet / Delivery Lead)</h4>
+<p>Cette section détaille le management opérationnel des risques de l&#39;IA selon IBM Trustworthy AI :</p>
+<ol>
+<li><strong>Gestion du Risque d&#39;Hallucination :</strong> Intégration de critères stricts dans la Définition du Prêt (DoD) avec Factsheets certifiant 99,6% de fidélité avant validation finale.</li>
+<li><strong>Ségrégation des Rôles &amp; Moindre Privilège (RBAC) :</strong> Cloisonnement des accès techniques (réservés à l&#39;Admin) pour protéger les opérateurs standard des erreurs de manipulation.</li>
+<li><strong>Garde-fous de Sécurité :</strong> Barrière Granite Guardian bloquant les requêtes SQL dangereuses et anonymisant les données des fournisseurs.</li>
+<li><strong>Validation Humaine Obligatoire (Human-in-the-Loop) :</strong> Politique de gouvernance stricte interdisant tout engagement financier autonome sans signature humaine.</li>
+</ol>
+<h4>📋 Exact Text to Copy-Paste into Application Field:</h4>
+<pre><code class="language-text">As Project Manager, I operationalized IBM&#39;s Trustworthy AI framework across the delivery lifecycle:
+
+1. Hallucination Risk Management: Mitigated hallucination risks by requiring temperature=0.0 and schema-grounded prompts in definition-of-done criteria. Factsheets logged a 99.6% faithfulness score before production sign-off.
+
+2. Data Privacy &amp; Least Privilege (RBAC): Enforced role-based access control, isolating raw SQL and schema metrics to Admin roles. Standard warehouse users operate on sanitized views, protecting system integrity and preventing operational errors.
+
+3. Security Guardrails: Implemented Granite Guardian as an architectural tollgate to prevent prompt injection exploits and prohibit destructive mutations (DROP, DELETE). Mandated masking of supplier PII in all audit logs.
+
+4. Human-in-the-Loop Governance: Enforced an uncompromised policy requiring explicit operator confirmation before dispatching automated restock emails, preventing unauthorized financial commitments.
+</code></pre>
+
+</body>
+</html>

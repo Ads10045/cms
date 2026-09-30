@@ -1,0 +1,230 @@
+◇ injected env (7) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[2026-06-26 14:48:55] INFO: Swagger UI enabled at /api-docs (development only, protected by Basic Auth)
+[2026-06-26 14:48:55] INFO: [DEVELOPMENT] Backend server & Socket.io running on port 3001
+[2026-06-26 14:48:55] INFO: Database connected, tables 'users' and 'messages' are ready.
+[2026-06-26 14:51:17] INFO: [FRONTEND] Frontend application started
+[2026-06-26 14:51:17] INFO: [REQ] GET /api/messages
+[2026-06-26 14:51:17] INFO: [REQ] GET /api/auth/me
+[2026-06-26 14:51:17] INFO: Fetched 3 messages
+[2026-06-26 14:51:18] INFO: New client connected: Kt5LAAiHAXzzxy-cAAAB
+[2026-06-26 15:16:02] INFO: [REQ] GET /api/auth/me
+[2026-06-26 15:16:02] INFO: [FRONTEND] Frontend application started
+[2026-06-26 15:16:02] INFO: [REQ] GET /api/messages
+[2026-06-26 15:16:02] INFO: Fetched 3 messages
+[2026-06-26 15:16:05] INFO: [FRONTEND] Frontend application started
+[2026-06-26 15:16:05] INFO: [REQ] GET /api/auth/me
+[2026-06-26 15:16:05] INFO: [REQ] GET /api/messages
+[2026-06-26 15:16:05] INFO: Fetched 3 messages
+[2026-06-26 15:25:11] INFO: [REQ] GET /api/auth/me
+[2026-06-26 15:25:11] INFO: [FRONTEND] Frontend application started
+[2026-06-26 15:25:11] INFO: [REQ] GET /api/messages
+[2026-06-26 15:25:11] INFO: Fetched 3 messages
+[2026-06-26 15:25:11] INFO: New client connected: mUnbGfCSuZ5cWrL5AAAF
+[2026-06-26 15:25:56] INFO: Client disconnected: mUnbGfCSuZ5cWrL5AAAF
+[2026-06-26 15:56:09] INFO: [REQ] GET /wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:09] INFO: [REQ] GET /xmlrpc.php?rsd
+[2026-06-26 15:56:10] INFO: [REQ] GET /blog/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:11] INFO: [REQ] GET /web/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:11] INFO: [REQ] GET /wordpress/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:11] INFO: [REQ] GET /website/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:12] INFO: [REQ] GET /wp/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:12] INFO: [REQ] GET /news/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:13] INFO: [REQ] GET /2018/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:13] INFO: [REQ] GET /2019/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:14] INFO: [REQ] GET /shop/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:14] INFO: [REQ] GET /wp1/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:15] INFO: [REQ] GET /test/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:15] INFO: [REQ] GET /media/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:16] INFO: [REQ] GET /wp2/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:16] INFO: [REQ] GET /site/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:17] INFO: [REQ] GET /cms/wp-includes/wlwmanifest.xml
+[2026-06-26 15:56:17] INFO: [REQ] GET /sito/wp-includes/wlwmanifest.xml
+[2026-06-26 16:25:36] INFO: Client disconnected: Kt5LAAiHAXzzxy-cAAAB
+[2026-06-26 16:25:38] INFO: New client connected: kPx_QOYWAPOomH5tAAAH
+[2026-06-26 16:41:08] INFO: Client disconnected: kPx_QOYWAPOomH5tAAAH
+[2026-06-26 16:56:25] INFO: New client connected: CkYXPjnn8IFpV_ypAAAJ
+[2026-06-26 16:58:05] INFO: Client disconnected: CkYXPjnn8IFpV_ypAAAJ
+[2026-06-26 16:58:07] INFO: New client connected: HQC5GFHy_MoFvZAuAAAL
+[2026-06-26 16:58:22] INFO: Client disconnected: HQC5GFHy_MoFvZAuAAAL
+[2026-06-26 16:58:26] INFO: New client connected: yA_fDW0KRq5MjgnXAAAN
+[2026-06-26 17:02:47] INFO: Client disconnected: yA_fDW0KRq5MjgnXAAAN
+[2026-06-26 17:02:52] INFO: New client connected: XBp6UJNgMFLcL_I5AAAP
+[2026-06-26 17:18:32] INFO: Client disconnected: XBp6UJNgMFLcL_I5AAAP
+[2026-06-26 17:19:02] INFO: New client connected: c4GOD-5zGVcHJvlvAAAR
+[2026-06-26 17:34:17] INFO: Client disconnected: c4GOD-5zGVcHJvlvAAAR
+[2026-06-26 17:34:47] INFO: New client connected: K0SprUYX1FzjwHisAAAT
+[2026-06-26 17:49:07] INFO: Client disconnected: K0SprUYX1FzjwHisAAAT
+[2026-06-26 17:49:37] INFO: New client connected: tSpk6YOcpJUhHRj7AAAV
+[2026-06-26 17:50:37] INFO: [REQ] GET /wp-json/
+[2026-06-26 17:50:37] INFO: [REQ] GET /xmlrpc.php?rsd
+[2026-06-26 17:54:48] INFO: Client disconnected: tSpk6YOcpJUhHRj7AAAV
+[2026-06-26 17:54:51] INFO: New client connected: -ln9iYX-v1NneepPAAAX
+[2026-06-26 17:54:58] INFO: Client disconnected: -ln9iYX-v1NneepPAAAX
+[2026-06-26 17:55:02] INFO: New client connected: T_l9y-yLaacdobbrAAAZ
+[2026-06-26 18:02:55] INFO: Client disconnected: T_l9y-yLaacdobbrAAAZ
+[2026-06-26 18:03:03] INFO: New client connected: mG0Cw09z6_BT8rpHAAAb
+[2026-06-26 18:07:55] INFO: Client disconnected: mG0Cw09z6_BT8rpHAAAb
+[2026-06-26 18:08:27] INFO: New client connected: 3trw4Xm5swe4ohbWAAAd
+[2026-06-26 18:12:55] INFO: Client disconnected: 3trw4Xm5swe4ohbWAAAd
+[2026-06-26 18:13:27] INFO: New client connected: Co74znZkvaBJgNCdAAAf
+[2026-06-26 18:18:49] INFO: [REQ] GET /favicon.ico
+[2026-06-26 18:18:49] INFO: [REQ] GET /favicon.png
+[2026-06-26 18:19:49] INFO: [FRONTEND] Frontend application started
+[2026-06-26 18:19:49] INFO: [REQ] GET /api/messages
+[2026-06-26 18:19:49] INFO: [REQ] GET /api/auth/me
+[2026-06-26 18:19:49] ERROR: [FRONTEND] Error loading messages  - Request aborted
+[2026-06-26 18:19:49] INFO: Fetched 3 messages
+[2026-06-26 18:24:58] INFO: Client disconnected: Co74znZkvaBJgNCdAAAf
+[2026-06-26 18:24:59] INFO: New client connected: FguzIT3ju3130oEHAAAi
+[2026-06-26 18:51:59] INFO: [REQ] GET /.env
+[2026-06-26 19:30:12] INFO: Client disconnected: FguzIT3ju3130oEHAAAi
+[2026-06-26 19:30:48] INFO: New client connected: lD5Zzs0-6jQSt-SyAAAk
+[2026-06-26 20:52:13] INFO: Client disconnected: lD5Zzs0-6jQSt-SyAAAk
+[2026-06-26 20:52:43] INFO: New client connected: B-Ve-ieyWch3U_kGAAAm
+[2026-06-26 21:09:13] INFO: Client disconnected: B-Ve-ieyWch3U_kGAAAm
+[2026-06-26 21:10:45] INFO: New client connected: ZeigeWGSYPxYN1V6AAAp
+[2026-06-26 21:30:16] INFO: [REQ] POST /
+[2026-06-26 22:14:30] INFO: Client disconnected: ZeigeWGSYPxYN1V6AAAp
+[2026-06-26 22:14:33] INFO: New client connected: FKhBcnF6RzUb71acAAAr
+[2026-06-26 22:31:28] INFO: Client disconnected: FKhBcnF6RzUb71acAAAr
+[2026-06-26 22:42:43] INFO: New client connected: yXP8wh6Zoq75UJZlAAAt
+[2026-06-26 22:56:04] INFO: Client disconnected: yXP8wh6Zoq75UJZlAAAt
+[2026-06-26 22:56:20] INFO: New client connected: NWw1O4UDHYZshI_HAAAv
+[2026-06-26 23:13:15] INFO: Client disconnected: NWw1O4UDHYZshI_HAAAv
+[2026-06-26 23:57:12] INFO: New client connected: SUlXQ4u9msOm_9UnAAAx
+[2026-06-26 23:59:36] INFO: Client disconnected: SUlXQ4u9msOm_9UnAAAx
+[2026-06-27 00:00:08] INFO: New client connected: RyUhReK8QeSjaoooAAAz
+[2026-06-27 01:23:42] INFO: [REQ] GET /robots.txt
+[2026-06-27 01:24:54] INFO: Client disconnected: RyUhReK8QeSjaoooAAAz
+[2026-06-27 01:24:55] INFO: New client connected: tq0SxpYX7MYXMNf1AAA1
+[2026-06-27 01:42:18] INFO: Client disconnected: tq0SxpYX7MYXMNf1AAA1
+[2026-06-27 01:42:27] INFO: New client connected: x6rHE08loHGiu0fTAAA3
+[2026-06-27 02:00:39] INFO: Client disconnected: x6rHE08loHGiu0fTAAA3
+[2026-06-27 03:26:00] INFO: New client connected: WTSP38NAWXY0VvLTAAA5
+[2026-06-27 03:34:27] INFO: Client disconnected: WTSP38NAWXY0VvLTAAA5
+[2026-06-27 03:34:52] INFO: New client connected: 7DEVBgZGfiYPGNdWAAA7
+[2026-06-27 03:50:14] INFO: Client disconnected: 7DEVBgZGfiYPGNdWAAA7
+[2026-06-27 05:10:38] INFO: New client connected: j9vBrJK5dn7wewKzAAA9
+[2026-06-27 05:28:09] INFO: Client disconnected: j9vBrJK5dn7wewKzAAA9
+[2026-06-27 05:53:54] INFO: New client connected: YaLl3zlVEJc7k50sAAA_
+[2026-06-27 06:27:55] INFO: Client disconnected: YaLl3zlVEJc7k50sAAA_
+[2026-06-27 07:49:11] INFO: New client connected: qH3YmE1fLn-UKd4uAABB
+[2026-06-27 08:45:26] INFO: Client disconnected: qH3YmE1fLn-UKd4uAABB
+[2026-06-27 08:47:12] INFO: New client connected: Lpftx7qUebJdXWCkAABD
+[2026-06-27 09:17:50] INFO: Client disconnected: Lpftx7qUebJdXWCkAABD
+[2026-06-27 09:18:03] INFO: New client connected: 4d-qz1HQJVt966b1AABF
+[2026-06-27 09:52:20] INFO: Client disconnected: 4d-qz1HQJVt966b1AABF
+[2026-06-27 10:19:06] INFO: New client connected: r6eF62YQZ4bcyWk4AABH
+[2026-06-27 10:53:37] INFO: Client disconnected: r6eF62YQZ4bcyWk4AABH
+[2026-06-27 11:13:15] INFO: New client connected: 4gE8Vb6f7zLAkwwkAABJ
+[2026-06-27 11:19:54] INFO: Client disconnected: 4gE8Vb6f7zLAkwwkAABJ
+[2026-06-27 11:20:26] INFO: New client connected: ELqaosYlHSdcWr4gAABL
+[2026-06-27 11:35:59] INFO: Client disconnected: ELqaosYlHSdcWr4gAABL
+[2026-06-27 12:18:52] INFO: New client connected: 0Sp8oIfGmaWh0X4fAABN
+[2026-06-27 12:20:55] INFO: Client disconnected: 0Sp8oIfGmaWh0X4fAABN
+[2026-06-27 12:21:34] INFO: New client connected: mmOcig3vh-17q7GgAABP
+[2026-06-27 12:33:01] INFO: Client disconnected: mmOcig3vh-17q7GgAABP
+[2026-06-27 12:33:22] INFO: New client connected: qd2rAPJaevkhfgdLAABR
+[2026-06-27 13:05:47] INFO: Client disconnected: qd2rAPJaevkhfgdLAABR
+[2026-06-27 13:22:05] INFO: New client connected: h1V7j1uQfLksKWZtAABT
+[2026-06-27 13:54:21] INFO: Client disconnected: h1V7j1uQfLksKWZtAABT
+[2026-06-27 13:58:05] INFO: New client connected: psNWZiuSH-1nxLDeAABV
+[2026-06-27 14:06:45] INFO: Client disconnected: psNWZiuSH-1nxLDeAABV
+[2026-06-27 14:07:18] INFO: [REQ] GET /api/messages
+[2026-06-27 14:07:18] INFO: Fetched 3 messages
+[2026-06-27 14:07:18] INFO: [REQ] GET /api/auth/me
+[2026-06-27 14:07:18] INFO: [FRONTEND] Frontend application started
+[2026-06-27 14:07:19] INFO: New client connected: EeLUBaeirPr6CIqNAABX
+[2026-06-27 14:07:21] INFO: New client connected: iF5E9L4l_AK-pKXDAABZ
+[2026-06-27 14:22:33] INFO: Client disconnected: EeLUBaeirPr6CIqNAABX
+[2026-06-27 14:22:33] INFO: Client disconnected: iF5E9L4l_AK-pKXDAABZ
+[2026-06-27 15:23:47] INFO: New client connected: NTHe4EUGiU-IP-6PAABb
+[2026-06-27 15:40:50] INFO: Client disconnected: NTHe4EUGiU-IP-6PAABb
+[2026-06-27 15:41:09] INFO: New client connected: 3AQjJ5UmOc-xLfpSAABd
+[2026-06-27 15:58:54] INFO: Client disconnected: 3AQjJ5UmOc-xLfpSAABd
+[2026-06-27 16:24:57] INFO: New client connected: QXT8M8UiD2ScP1sBAABf
+[2026-06-27 16:41:09] INFO: Client disconnected: QXT8M8UiD2ScP1sBAABf
+[2026-06-27 17:25:40] INFO: New client connected: 5u8R9mqQ5bb1kkIpAABh
+[2026-06-27 17:43:05] INFO: Client disconnected: 5u8R9mqQ5bb1kkIpAABh
+[2026-06-27 18:26:49] INFO: New client connected: 7GTpzHhwkczulQXMAABj
+[2026-06-27 18:44:38] INFO: Client disconnected: 7GTpzHhwkczulQXMAABj
+[2026-06-27 19:06:51] INFO: New client connected: rmZUVu7FCZf-YD4yAABl
+[2026-06-27 19:10:50] INFO: Client disconnected: rmZUVu7FCZf-YD4yAABl
+[2026-06-27 19:11:26] INFO: New client connected: fyhoaSiUUcg0AXzxAABn
+[2026-06-27 19:27:33] INFO: Client disconnected: fyhoaSiUUcg0AXzxAABn
+[2026-06-27 19:28:07] INFO: New client connected: X15jurPf5tsje55mAABp
+[2026-06-27 19:45:05] INFO: Client disconnected: X15jurPf5tsje55mAABp
+[2026-06-27 19:59:24] INFO: New client connected: ikARvcy4_e-lPj-mAABr
+[2026-06-27 20:16:22] INFO: Client disconnected: ikARvcy4_e-lPj-mAABr
+[2026-06-27 20:28:47] INFO: New client connected: osrVizpKvW2VVMtGAABt
+[2026-06-27 20:45:06] INFO: Client disconnected: osrVizpKvW2VVMtGAABt
+[2026-06-27 21:01:10] INFO: New client connected: 7FniLB93mnhTt5uXAABv
+[2026-06-27 21:55:13] INFO: Client disconnected: 7FniLB93mnhTt5uXAABv
+[2026-06-27 21:55:20] INFO: New client connected: wiw_VAUp6tI6Rc31AABx
+[2026-06-27 22:22:22] INFO: Client disconnected: wiw_VAUp6tI6Rc31AABx
+[2026-06-27 22:23:45] INFO: New client connected: 5Tl2KDrS8MLMG9LkAABz
+[2026-06-27 22:37:16] INFO: Client disconnected: 5Tl2KDrS8MLMG9LkAABz
+[2026-06-27 22:37:34] INFO: New client connected: GmZ8vC7Q3FhC1NMhAAB1
+[2026-06-27 22:40:17] INFO: Client disconnected: GmZ8vC7Q3FhC1NMhAAB1
+[2026-06-27 22:41:51] INFO: New client connected: DU6bkz7TGaXE08vnAAB3
+[2026-06-27 22:42:15] INFO: New client connected: U1OnUV-ihcmpmInaAAB5
+[2026-06-27 22:42:20] INFO: Client disconnected: DU6bkz7TGaXE08vnAAB3
+[2026-06-27 22:43:07] INFO: Client disconnected: U1OnUV-ihcmpmInaAAB5
+[2026-06-27 22:43:19] INFO: New client connected: g-STX1w2_JYYJKuzAAB7
+[2026-06-27 22:43:32] INFO: Client disconnected: g-STX1w2_JYYJKuzAAB7
+[2026-06-27 22:43:59] INFO: New client connected: p1Opl0lO2uqrFfAhAAB9
+[2026-06-27 22:44:22] INFO: Client disconnected: p1Opl0lO2uqrFfAhAAB9
+◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+FATAL: JWT_SECRET is not set in .env. Exiting.
+◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[2026-07-03 10:04:30] INFO: Swagger UI enabled at /api-docs (development only, protected by Basic Auth)
+[2026-07-03 10:04:30] INFO: [DEVELOPMENT] Backend server & Socket.io running on port 3001
+[2026-07-03 10:04:30] INFO: Database connected, tables 'users' and 'messages' are ready.
+[2026-07-03 10:05:01] INFO: [REQ] GET /api/auth/me
+[2026-07-03 10:05:01] INFO: [FRONTEND] Frontend application started
+[2026-07-03 13:04:07] INFO: [REQ] GET /robots.txt
+[2026-07-03 13:13:37] INFO: [REQ] GET /robots.txt
+[2026-07-03 16:00:22] INFO: [REQ] GET /api/auth/me
+[2026-07-03 16:00:22] INFO: [FRONTEND] Frontend application started
+[2026-07-03 23:05:42] INFO: [REQ] GET /robots.txt
+[2026-07-04 01:56:56] INFO: [REQ] POST /login/?login_only=1
+[2026-07-04 01:56:57] INFO: [REQ] POST /login/?login_only=1
+◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[2026-09-08 07:58:15] INFO: Swagger UI enabled at /api-docs (development only, protected by Basic Auth)
+[2026-09-08 07:58:15] INFO: [DEVELOPMENT] Backend server & Socket.io running on port 3001
+[2026-09-08 07:58:15] INFO: Database connected, tables 'users' and 'messages' are ready.
+[2026-09-08 08:00:49] INFO: [FRONTEND] Frontend application started
+[2026-09-08 08:00:49] INFO: [REQ] GET /api/auth/me
+[2026-09-08 08:00:58] INFO: [REQ] POST /api/auth/login
+[2026-09-08 08:00:58] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password
+[2026-09-08 08:01:01] INFO: [REQ] POST /api/auth/login
+[2026-09-08 08:01:01] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password
+[2026-09-08 08:01:03] INFO: [REQ] POST /api/auth/login
+[2026-09-08 08:01:03] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password
+[2026-09-08 08:01:31] INFO: [REQ] POST /api/auth/login
+[2026-09-08 08:01:31] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password
+[2026-09-08 08:01:33] INFO: [REQ] POST /api/auth/login
+[2026-09-08 08:01:33] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password
+[2026-09-08 08:01:35] INFO: [FRONTEND] Frontend application started
+[2026-09-08 08:01:35] INFO: [REQ] GET /api/auth/me
+[2026-09-08 08:01:40] INFO: [REQ] POST /api/auth/login
+[2026-09-08 08:01:40] ERROR: [FRONTEND] Auth failed for admin: Invalid username or password
+[2026-09-08 08:02:08] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 08:02:27] INFO: [REQ] GET /api/messages
+[2026-09-08 08:02:28] INFO: [REQ] GET /api/messages
+[2026-09-08 08:02:35] INFO: [REQ] POST /api/messages
+[2026-09-08 08:07:11] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 08:12:12] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 08:48:29] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 14:29:08] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 14:29:33] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 14:34:36] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 14:40:01] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 14:45:08] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 14:57:28] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 15:04:05] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 16:16:12] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 17:19:52] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 21:07:20] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 21:12:21] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary
+[2026-09-08 21:17:22] INFO: [REQ] POST /exa.language_server_pb.LanguageServerService/RetrieveUserQuotaSummary

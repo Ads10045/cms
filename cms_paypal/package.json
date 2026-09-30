@@ -1,0 +1,12 @@
+{
+  "name": "cms_paypal",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "local-web-test/backend",
+    "local-web-test/frontend"
+  ],
+  "dependencies": {
+    "pg": "^8.22.0"
+  }
+}

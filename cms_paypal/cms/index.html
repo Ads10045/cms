@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMA - Boutique Électronique & Audio | Paiement PayPal Sécurisé</title>
+    <meta name="description" content="Découvrez notre sélection de produits high-tech, audio et montres connectées haut de gamme avec paiement sécurisé PayPal et livraison rapide.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛍️</text></svg>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container-fluid px-4 px-xl-5">
+            <a class="brand-logo" href="#" id="nav-brand-logo" onclick="App.showCatalogView()">
+                <span class="brand-badge-icon"><i class="bi bi-lightning-charge-fill"></i></span>
+                <span>C<span class="text-primary">MA</span></span>
+            </a>
+
+            <div class="search-input-group d-none d-md-block mx-auto flex-grow-1 mx-lg-4">
+                <i class="bi bi-search search-icon"></i>
+                <input type="search" id="header-search-input" class="form-control" placeholder="Rechercher un produit, une marque..." aria-label="Recherche">
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-outline-secondary rounded-circle p-2 d-flex align-items-center justify-content-center" id="theme-toggle-btn" title="Changer de thème" aria-label="Changer de thème" style="width: 40px; height: 40px;">
+                    <i class="bi bi-moon-stars-fill" id="theme-icon" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-outline-secondary rounded-circle p-2 d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#modal-paypal-settings" title="Paramètres PayPal" aria-label="Paramètres PayPal" style="width: 40px; height: 40px;">
+                    <i class="bi bi-gear-fill text-warning" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-primary rounded-pill px-3 py-2 d-flex align-items-center gap-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-cart" id="btn-open-cart">
+                    <i class="bi bi-bag-check-fill"></i>
+                    <span class="d-none d-sm-inline">Panier</span>
+                    <span class="badge bg-white text-primary rounded-pill fw-bold" id="cart-badge-count">0</span>
+                </button>
+            </div>
+        </div>
+        <div class="container-fluid px-4 px-xl-5 d-md-none mt-2 pt-2 border-top">
+            <div class="search-input-group w-100">
+                <i class="bi bi-search search-icon"></i>
+                <input type="search" id="mobile-search-input" class="form-control" placeholder="Rechercher un produit..." aria-label="Recherche">
+            </div>
+        </div>
+    </nav>
+
+    <!-- LAYOUT PRINCIPAL -->
+    <main class="container-fluid px-4 px-xl-5 my-4" id="main-container">
+        
+        <!-- VUE CATALOGUE -->
+        <div id="catalog-view">
+            <div class="row g-4">
+                
+                <!-- COLONNE GAUCHE (SIDEBAR) -->
+                <div class="col-lg-3 col-xl-2 d-none d-lg-block">
+                    <div class="sidebar-categories card border-0 shadow-sm p-3 sticky-top" style="top: 100px; z-index: 10; border-radius: 16px; background-color: var(--bg-surface-elevated);">
+                        <h5 class="fw-bold mb-3 px-2 font-heading d-flex align-items-center gap-2">
+                            <i class="bi bi-list-ul text-primary"></i> Catégories
+                        </h5>
+                        <div class="nav flex-column gap-2" id="sidebar-categories-container">
+                            <button class="btn text-start category-sidebar-btn active" data-category="all">
+                                <i class="bi bi-grid-fill me-2 text-primary"></i> Tous les articles
+                            </button>
+                            <button class="btn text-start category-sidebar-btn" data-category="audio">
+                                <i class="bi bi-headphones me-2 text-primary"></i> Audio & Son
+                            </button>
+                            <button class="btn text-start category-sidebar-btn" data-category="montres">
+                                <i class="bi bi-smartwatch me-2 text-primary"></i> Montres
+                            </button>
+                            <button class="btn text-start category-sidebar-btn" data-category="tech">
+                                <i class="bi bi-laptop me-2 text-primary"></i> High-Tech
+                            </button>
+                            <button class="btn text-start category-sidebar-btn" data-category="accessoires">
+                                <i class="bi bi-backpack me-2 text-primary"></i> Accessoires
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLONNE DROITE (CONTENU) -->
+                <div class="col-12 col-lg-9 col-xl-10">
+                    
+
+
+                    <!-- BARRE DE FILTRE ET CATEGORIES MOBILE -->
+                    <div class="filter-bar mb-4">
+                        <div class="row g-3 align-items-center justify-content-between">
+                            <!-- Mobile Categories -->
+                            <div class="col-12 d-lg-none">
+                                <div class="category-pills" id="category-pills-container">
+                                    <button class="category-btn active" data-category="all">
+                                        <i class="bi bi-grid-fill me-1"></i> Tous les articles
+                                    </button>
+                                    <button class="category-btn" data-category="audio">
+                                        <i class="bi bi-headphones me-1"></i> Audio & Son
+                                    </button>
+                                    <button class="category-btn" data-category="montres">
+                                        <i class="bi bi-smartwatch me-1"></i> Montres
+                                    </button>
+                                    <button class="category-btn" data-category="tech">
+                                        <i class="bi bi-laptop me-1"></i> High-Tech
+                                    </button>
+                                    <button class="category-btn" data-category="accessoires">
+                                        <i class="bi bi-backpack me-1"></i> Accessoires
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Tri et compteur -->
+                            <div class="col-12 d-flex align-items-center justify-content-between justify-content-lg-end gap-3">
+                                <span class="text-muted small text-nowrap" id="products-count-label">8 produits disponibles</span>
+                                <select class="form-select form-select-sm w-auto rounded-pill" id="sort-select" aria-label="Trier par">
+                                    <option value="featured">✨ Mis en avant</option>
+                                    <option value="price-asc">💵 Prix : Moins cher</option>
+                                    <option value="price-desc">💎 Prix : Plus cher</option>
+                                    <option value="rating">⭐ Meilleurs avis</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GRILLE DES PRODUITS -->
+                    <div class="row g-4" id="products-grid"></div>
+                    
+                    <!-- PAGINATION -->
+                    <div id="pagination-container"></div>
+
+                    <div id="no-products-found" class="text-center py-5 d-none">
+                        <i class="bi bi-emoji-frown text-muted" style="font-size: 3.5rem;"></i>
+                        <h4 class="mt-3 fw-bold">Aucun produit ne correspond à votre recherche</h4>
+                        <button class="btn btn-outline-primary rounded-pill mt-2" id="btn-reset-filters">
+                            <i class="bi bi-arrow-clockwise me-1"></i> Réinitialiser les filtres
+                        </button>
+                    </div>
+                </div> <!-- /col-droite -->
+            </div> <!-- /row -->
+        </div> <!-- /catalog-view -->
+
+        <!-- VUE DÉTAIL PRODUIT (Page complète sans Pop-in) -->
+        <div id="product-detail-view" class="d-none">
+            
+            <div class="mb-4 d-flex align-items-center">
+                <button class="btn btn-outline-secondary rounded-pill px-4" onclick="App.showCatalogView()">
+                    <i class="bi bi-arrow-left me-2"></i> Retour au catalogue
+                </button>
+            </div>
+
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden" style="background-color: var(--bg-surface);">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="row g-5">
+                        
+                        <!-- Galerie d'images (Layout horizontal large) -->
+                        <div class="col-lg-6">
+                            <div class="detail-main-img-wrap shadow-sm mb-3" style="height: 500px; border-radius: var(--radius-xl);">
+                                <img src="" alt="Aperçu du produit" id="detail-main-image" class="detail-main-img" style="object-fit: contain; width: 100%; height: 100%; background: var(--bg-body);">
+                                <span class="product-badge" id="detail-product-badge">Bestseller</span>
+                            </div>
+                            <div class="detail-thumbnails" id="detail-thumbnails-container" style="justify-content: center;"></div>
+                        </div>
+
+                        <!-- Informations et Achat -->
+                        <div class="col-lg-6 d-flex flex-column justify-content-center">
+                            <div class="mb-2">
+                                <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-1 mb-2" id="detail-product-category">Catégorie</span>
+                                <h2 class="fw-bolder mb-3" id="detailProductTitle" style="font-size: 2.5rem; letter-spacing: -0.03em;">Nom du produit</h2>
+                            </div>
+                            
+                            <div class="d-flex align-items-center gap-2 mb-3">
+                                <div class="rating-stars fs-5" id="detail-product-stars"></div>
+                                <span class="text-muted" id="detail-product-rating-text">(4.9 / 5)</span>
+                            </div>
+
+                            <div class="d-flex align-items-end gap-3 mb-4 pb-4 border-bottom">
+                                <span class="current-price text-primary fw-bolder" id="detail-product-price" style="font-size: 3rem; line-height: 1;">199.99 €</span>
+                                <span class="original-price text-muted fs-4 mb-1" id="detail-product-original-price">249.99 €</span>
+                                <span class="badge bg-success-subtle text-success ms-auto px-3 py-2 fs-6 rounded-pill" id="detail-product-stock">En stock</span>
+                            </div>
+
+                            <p class="text-muted fs-5 mb-4" id="detail-product-description" style="line-height: 1.6;">
+                                Description complète du produit...
+                            </p>
+
+                            <h5 class="fw-bold mb-3">Points clés :</h5>
+                            <ul class="product-features-list fs-6 mb-4" id="detail-product-features"></ul>
+
+                            <!-- Caractéristiques techniques -->
+                            <div class="accordion accordion-flush mb-5 border rounded-4 overflow-hidden" id="accordionSpecs">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button py-3 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpecs">
+                                            <i class="bi bi-cpu me-2 fs-5 text-primary"></i> Spécifications détaillées
+                                        </button>
+                                    </h2>
+                                    <div id="collapseSpecs" class="accordion-collapse collapse show" data-bs-parent="#accordionSpecs">
+                                        <div class="accordion-body p-3">
+                                            <table class="table table-striped mb-0" id="detail-product-specs-table">
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sélecteur de Quantité & Sous-total -->
+                            <div class="p-4 bg-light rounded-4 mb-4 border">
+                                <div class="row align-items-center">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label class="fw-bold d-block mb-2 text-muted">Quantité désirée</label>
+                                        <div class="quantity-control d-inline-flex border-secondary" style="transform: scale(1.1); transform-origin: left;">
+                                            <button type="button" class="quantity-btn fs-5" id="detail-btn-qty-minus"><i class="bi bi-dash"></i></button>
+                                            <input type="text" class="quantity-input fs-5" id="detail-page-qty-input" value="1" readonly style="width: 60px;">
+                                            <button type="button" class="quantity-btn fs-5" id="detail-btn-qty-plus"><i class="bi bi-plus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 text-sm-end">
+                                        <span class="fw-bold text-muted d-block mb-1">Total à régler</span>
+                                        <span class="fw-bolder text-dark" id="detail-subtotal-price" style="font-size: 2.5rem; line-height: 1;">199.99 €</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bloc Paiement PayPal -->
+                            <div class="paypal-checkout-box border-primary shadow-sm" style="border-width: 2px;">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <span class="fw-bold fs-5 text-dark d-flex align-items-center gap-2">
+                                        <i class="bi bi-credit-card-2-front-fill text-primary"></i> Paiement Rapide Sécurisé
+                                    </span>
+                                </div>
+                                <div id="paypal-button-container-page" class="mt-2"></div>
+                                <div class="text-center my-2 text-muted small fw-bold">OU</div>
+                                <button type="button" class="btn btn-dark w-100 rounded-pill fw-bold py-2 mb-3 fs-6 d-flex justify-content-center align-items-center gap-2 shadow-sm" id="detail-btn-credit-card" onclick="App.handleCreditCardPayment()">
+                                    <i class="bi bi-credit-card-fill"></i> Payer par Carte Bancaire
+                                </button>
+                                <button type="button" class="btn btn-outline-dark w-100 mt-2 rounded-pill fw-bold py-3 fs-5" id="detail-btn-add-cart">
+                                    <i class="bi bi-cart-plus me-2"></i> Ajouter au panier
+                                </button>
+                            </div>
+
+                            <div class="d-flex justify-content-around mt-4 pt-3 text-center text-muted border-top fs-6">
+                                <div><i class="bi bi-shield-check text-success fs-4 d-block mb-1"></i> Garantie 2 ans</div>
+                                <div><i class="bi bi-truck text-primary fs-4 d-block mb-1"></i> Expédition 24h</div>
+                                <div><i class="bi bi-lock text-warning fs-4 d-block mb-1"></i> SSL 256-bit</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer mt-auto">
+        <!-- Pre-footer / Partenaires & Contact -->
+        <div class="footer-top py-4 bg-white text-dark border-top border-bottom">
+            <div class="container-fluid px-4 px-xl-5">
+                <div class="row align-items-center">
+                    <div class="col-md-6 mb-3 mb-md-0 d-flex flex-column gap-2">
+                        <div class="d-flex align-items-center gap-2 font-heading fs-4 fw-bold">
+                            <span class="brand-badge-icon bg-primary text-white rounded-circle p-1 px-2"><i class="bi bi-lightning-charge-fill"></i></span>
+                            <span>C<span class="text-primary">MA</span></span>
+                        </div>
+                        <p class="mb-0 small text-muted">
+                            contact@cma-store.ma &nbsp;|&nbsp; 06.69.39.89.26 <br>
+                            06.16.48.13.90
+                        </p>
+                        <div class="d-flex gap-3 mt-1">
+                            <a href="#" class="text-muted text-decoration-none hover-primary" aria-label="Visiter notre page Facebook"><i class="bi bi-facebook fs-5" aria-hidden="true"></i></a>
+                            <a href="#" class="text-muted text-decoration-none hover-primary" aria-label="Visiter notre page Instagram"><i class="bi bi-instagram fs-5" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-md-end d-flex align-items-center justify-content-md-end flex-wrap gap-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1200px-Visa_Inc._logo.svg.png" alt="Visa" style="height: 25px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1200px-Mastercard-logo.svg.png" alt="Mastercard" style="height: 30px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" style="height: 25px;">
+                        <span class="fw-bold ms-3 border-start ps-3 border-2 text-muted small">LIVRAISON GRATUITE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Principal -->
+        <div class="footer-main py-5 bg-dark text-light">
+            <div class="container-fluid px-4 px-xl-5">
+                <div class="row g-4">
+                    <!-- Colonne 1 -->
+                    <div class="col-6 col-lg-3">
+                        <h5 class="footer-title">Nous connaître</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> À propos de nous</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Contact & Service Client</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Page Facebook</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Colonne 2 -->
+                    <div class="col-6 col-lg-3">
+                        <h5 class="footer-title">Informations</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Comment acheter sur CMA?</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> FAQ & Aide</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Livraison et Paiement</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Conditions générales de vente</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Suivez un envoi</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Devenir Revendeur</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Colonne 3 -->
+                    <div class="col-6 col-lg-3">
+                        <h5 class="footer-title">Produits & offres</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Formulaire d'Achat Rapide</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Archives Des Produits</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Meilleures Ventes</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Produits En Vente</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Produits Récents</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Colonne 4 -->
+                    <div class="col-6 col-lg-3">
+                        <h5 class="footer-title">Compte & Blog</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Blog</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Mon Compte</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Liste De Souhaits</a></li>
+                            <li><a href="#"><i class="bi bi-dot text-success fs-5 me-1"></i> Comparaison De Produits</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PANIER OFFCANVAS -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-cart">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title fw-bold">
+                <i class="bi bi-bag-check me-2 text-primary"></i> Mon Panier (<span id="cart-drawer-count">0</span>)
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <div id="cart-items-list" class="flex-grow-1 overflow-auto pe-1"></div>
+            <div id="cart-empty-state" class="text-center my-auto py-5 d-none">
+                <i class="bi bi-bag-x text-muted" style="font-size: 3.5rem;"></i>
+                <h6 class="mt-3 fw-bold">Votre panier est vide</h6>
+                <button class="btn btn-outline-primary btn-sm rounded-pill mt-2" data-bs-dismiss="offcanvas">Découvrir les produits</button>
+            </div>
+            <div id="cart-footer-summary" class="border-top pt-3 mt-auto">
+                <div class="d-flex justify-content-between mb-2 small text-muted">
+                    <span>Sous-total</span><span id="cart-summary-subtotal">0.00 €</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2 small text-muted">
+                    <span>Livraison</span><span class="text-success fw-bold">Gratuite</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3 fs-5 fw-bold text-dark">
+                    <span>Total TTC</span><span id="cart-summary-total">0.00 €</span>
+                </div>
+                <div id="paypal-button-container-cart" class="mb-2"></div>
+                <div class="text-center my-2 text-muted small fw-bold">OU</div>
+                <button type="button" class="btn btn-dark w-100 rounded-pill fw-bold py-2 mb-3 shadow-sm d-flex justify-content-center align-items-center gap-2" id="cart-btn-credit-card" onclick="App.handleCreditCardPayment()">
+                    <i class="bi bi-credit-card-fill"></i> Payer par Carte Bancaire
+                </button>
+                <button class="btn btn-outline-danger btn-sm w-100 rounded-pill" id="btn-clear-cart">
+                    <i class="bi bi-trash me-1"></i> Vider le panier
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE REÇU -->
+    <div class="modal fade" id="modal-order-success" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-body p-4 text-center">
+                    <div class="receipt-success-icon"><i class="bi bi-check-lg"></i></div>
+                    <h4 class="fw-bold text-success mb-1">Paiement PayPal Réussi !</h4>
+                    <p class="text-muted small mb-4">Merci pour votre confiance. Votre commande a été validée avec succès.</p>
+                    <div class="receipt-card text-start mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                            <span class="small text-muted">Transaction ID :</span>
+                            <span class="badge bg-secondary font-monospace" id="receipt-transaction-id">PAYID-XXXXX</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 small">
+                            <span class="text-muted">Client :</span><span class="fw-bold" id="receipt-payer-name">Jean Dupont</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 small">
+                            <span class="text-muted">Email PayPal :</span><span class="fw-bold" id="receipt-payer-email">client@example.com</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 small">
+                            <span class="text-muted">Date :</span><span id="receipt-date">17/08/2026</span>
+                        </div>
+                        <div class="border-top pt-2 mt-2">
+                            <span class="small text-muted fw-bold">Articles commandés :</span>
+                            <ul class="list-unstyled mt-1 mb-2 small" id="receipt-items-list"></ul>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-top pt-2 mt-2">
+                            <span class="fw-bold">Montant Total Réglé :</span>
+                            <span class="fs-4 fw-bold text-primary" id="receipt-total-amount">0.00 €</span>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-outline-secondary flex-grow-1 rounded-pill" onclick="window.print();"><i class="bi bi-printer me-1"></i> Imprimer le reçu</button>
+                        <button type="button" class="btn btn-primary flex-grow-1 rounded-pill" data-bs-dismiss="modal" onclick="App.showCatalogView()">Continuer mes achats</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE PARAMÈTRES PAYPAL -->
+    <div class="modal fade" id="modal-paypal-settings" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-paypal text-primary me-2"></i> Configuration PayPal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="small text-muted">Vous pouvez coller ici votre propre **Client ID PayPal** ou laisser vide pour le mode simulateur Sandbox.</p>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small">Client ID PayPal :</label>
+                        <input type="text" class="form-control" id="input-paypal-client-id" placeholder="Ex: AX... ou sb">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary rounded-pill" id="btn-reset-paypal-config">Réinitialiser</button>
+                    <button type="button" class="btn btn-primary rounded-pill px-4" id="btn-save-paypal-config">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOASTS -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/paypal-config.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

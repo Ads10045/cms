@@ -1,0 +1,11 @@
+◇ injected env (3) from ../../../.whatsapp-agent.env // tip: ⌘ enable debugging { debug: true }
+📡 Récupération des matchs (3 jours)...
+✅ 3 match(s) trouvé(s) sur 3 jours
+   📅 Aujourd'hui — mardi 7 juillet : 2 match(s)
+   📅 Demain — mercredi 8 juillet : 0 match(s)
+   📅 jeudi 9 juillet : 1 match(s)
+🎨 Génération du visuel HTML...
+❌ Erreur : Runtime.callFunctionOn timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed.
+◇ injected env (3) from ../../../.whatsapp-agent.env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+📡 Récupération des matchs (3 jours)...
+❌ Erreur : getaddrinfo ENOTFOUND site.api.espn.com

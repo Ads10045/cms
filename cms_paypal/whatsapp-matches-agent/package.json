@@ -1,0 +1,10 @@
+{
+  "name": "whatsapp-matches-agent",
+  "version": "1.0.0",
+  "description": "WhatsApp Matches Agent — Matchs CdM du jour en image → WhatsApp",
+  "main": "matches.js",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "puppeteer": "^25.3.0"
+  }
+}

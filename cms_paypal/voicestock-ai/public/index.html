@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoiceStock AI | Assistant Vocal Intelligent sur IBM watsonx</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.svg">
+  <link rel="stylesheet" href="style.css?v=20260916_v7">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="zxing.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Header & Enterprise Badges -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="ibm-logo">
+        <span class="ibm-stripe">IBM</span>
+        <span class="consulting-badge">Consulting</span>
+      </div>
+      <div class="project-title">
+        <h1 id="appTitle">VoiceStock AI</h1>
+        <span id="appSubtitle" class="subtitle">Assistant Vocal & Gestion Intelligente du Stock Entrepôt</span>
+      </div>
+    </div>
+
+    <!-- Center Badges -->
+    <div class="header-badges">
+      <span class="badge badge-watsonx">watsonx.ai • Granite 3.0</span>
+      <span class="badge badge-postgres">Inventaire Central</span>
+      <span class="badge badge-governance">watsonx.governance</span>
+    </div>
+
+    <!-- Right Controls: Multilingual Selector (FR / EN / AR) & Connected User -->
+    <div class="header-right">
+      <!-- Multilingual Selector -->
+      <div class="lang-selector-group">
+        <span class="lang-label">Langue :</span>
+        <div class="lang-switch">
+          <button id="langBtnFr" class="lang-btn active" onclick="changeLanguage('fr')" title="Français">FR</button>
+          <button id="langBtnEn" class="lang-btn" onclick="changeLanguage('en')" title="English">EN</button>
+          <button id="langBtnAr" class="lang-btn" onclick="changeLanguage('ar')" title="العربية">AR</button>
+        </div>
+      </div>
+
+      <!-- Connected User Badge & Role Switcher -->
+      <div class="user-profile-badge">
+        <div class="user-avatar" title="Youness ABACH">YA</div>
+        <div class="user-details">
+          <span class="user-name">Youness ABACH</span>
+          <div class="role-selector-row">
+            <span class="role-label">Rôle :</span>
+            <select id="userRoleSelect" class="role-select" onchange="setUserRole(this.value)" title="Changer de rôle">
+              <option value="admin" selected>👑 Admin</option>
+              <option value="user">👤 Utilisateur (Standard)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Grid Layout -->
+  <main class="dashboard-grid">
+
+    <!-- Left Column: Filter & Add/Scan Controls -->
+    <section class="panel voice-panel">
+      <!-- Mode Selection Flag (Filtre vs Ajout & Scan) -->
+      <div class="mode-selector-flag">
+        <span class="flag-title">PANNEAU LATÉRAL :</span>
+        <div class="flag-switch">
+          <button id="flagBtnFilter" class="flag-btn active" onclick="setInteractionMode('filter')">
+            🔍 Filtres & Recherche
+          </button>
+          <button id="flagBtnAdd" class="flag-btn" onclick="setInteractionMode('add')">
+            ➕📦 Ajout & Scan
+          </button>
+        </div>
+      </div>
+
+      <!-- 1. SECTION FILTRE DE RECHERCHE (Active par défaut) -->
+      <div id="sectionFilterMode" class="mode-content-block">
+        <div class="panel-header">
+          <h2>🔍 Filtres de Recherche Multicritères</h2>
+          <span class="chip chip-accent">Interactive Query</span>
+        </div>
+
+        <div class="filter-box">
+          <!-- Live Text Search Input with Voice Input (STT only) -->
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="filterSearchInput" placeholder="Rechercher ou parler au micro..." oninput="applyFilters()">
+            <div class="search-actions-right">
+              <button id="filterCamBtn" class="btn-filter-cam" onclick="toggleCameraScanner('filter')" title="Lire un code-barres avec la caméra du PC (Webcam)">
+                📷
+              </button>
+              <button id="filterMicBtn" class="btn-filter-mic" onclick="toggleFilterVoice()" title="Saisie vocale pour filtrer (Web Speech API)">
+                <svg class="mic-icon-svg-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                  <line x1="12" y1="19" x2="12" y2="22"/>
+                </svg>
+              </button>
+              <button class="clear-search-btn" onclick="clearSearch()" title="Effacer">&times;</button>
+            </div>
+          </div>
+          <div id="filterMicListeningBar" class="filter-listening-status" style="display:none;">
+            <span class="listening-pulse"></span> Écoute vocale active... Dites ce que vous cherchez (ex: « 18650 », « BMS », « Allée B »)
+          </div>
+
+          <!-- PC Camera Barcode Scanner Viewport -->
+          <div id="filterCameraScannerBox" class="camera-scanner-container" style="display:none;">
+            <div class="camera-scanner-header">
+              <div class="camera-title-badge">
+                <span class="pulse-dot"></span>
+                <strong>Caméra PC Active • Visez le code-barres</strong>
+              </div>
+              <button type="button" class="btn-sm btn-close-cam" onclick="stopCameraScanner()">✕ Fermer Caméra</button>
+            </div>
+            <div class="camera-viewport-wrapper">
+              <video id="cameraScannerVideo" playsinline autoplay muted></video>
+              <canvas id="cameraScannerCanvas" style="display:none;"></canvas>
+              <div class="scanner-laser"></div>
+              <div class="scanner-reticle">
+                <div class="reticle-corner tl"></div>
+                <div class="reticle-corner tr"></div>
+                <div class="reticle-corner bl"></div>
+                <div class="reticle-corner br"></div>
+                <span class="scanner-live-tag">Scan caméra en direct...</span>
+              </div>
+            </div>
+            <div id="cameraScanFeedback" class="camera-scan-feedback">
+              Placez un code-barres (1D / EAN / Code 128) ou QR Code devant votre webcam.
+            </div>
+            <!-- Quick preset demo buttons for immediate 1-click test without camera/printed barcode -->
+            <div class="camera-quick-presets">
+              <span class="quick-preset-label">Ou tester un code direct :</span>
+              <button type="button" class="btn-cam-preset" onclick="processScannedBarcode('REF-BAT-18650')">🔋 18650</button>
+              <button type="button" class="btn-cam-preset" onclick="processScannedBarcode('REF-LPO-5000')">⚡ LiPo 5000</button>
+              <button type="button" class="btn-cam-preset" onclick="processScannedBarcode('REF-BMS-3S20A')">🛡️ BMS 3S</button>
+              <button type="button" class="btn-cam-preset" onclick="processScannedBarcode('REF-MOD-TP4056')">🔌 TP4056</button>
+            </div>
+          </div>
+          <div id="filterScanNotification" class="filter-scan-notification" style="display:none;"></div>
+
+          <!-- Status Filter Chips -->
+          <div class="filter-group">
+            <div class="filter-chips">
+              <button class="chip-filter active" data-status="all" onclick="setStatusFilter('all')">Tous (<span id="countAll">8</span>)</button>
+              <button class="chip-filter chip-filter-alert" data-status="alert" onclick="setStatusFilter('alert')">⚠️ Alertes (<span id="countAlert">4</span>)</button>
+              <button class="chip-filter chip-filter-ok" data-status="ok" onclick="setStatusFilter('ok')">✅ Conforme (<span id="countOk">4</span>)</button>
+            </div>
+          </div>
+
+          <!-- Secondary Filters: Location & Sort -->
+          <div class="filter-row">
+            <div class="filter-select-group">
+              <select id="filterLocation" onchange="applyFilters()">
+                <option value="all">Toutes les Allées</option>
+                <option value="Allée A">Allée A</option>
+                <option value="Allée B">Allée B</option>
+                <option value="Allée C">Allée C</option>
+                <option value="Allée D">Allée D</option>
+                <option value="Allée E">Allée E</option>
+              </select>
+            </div>
+            <div class="filter-select-group">
+              <select id="filterSort" onchange="applyFilters()">
+                <option value="stock-asc">Stock Croissant</option>
+                <option value="stock-desc">Stock Décroissant</option>
+                <option value="name-asc">Nom (A-Z)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Direct Action from Filter -->
+          <div class="filter-sql-summary">
+            <span id="filterResultCount" class="summary-text">8 articles trouvés</span>
+            <button class="btn-sm btn-generate-sql" onclick="syncFilterToSQL()">⚡ Filtrer</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. SECTION AJOUT & SCAN PRODUIT (Active quand le flag = 'add') -->
+      <div id="sectionAddProductMode" class="mode-content-block" style="display:none;">
+        <div class="panel-header">
+          <h2>➕ Référencer un Nouveau Composant</h2>
+          <span class="chip chip-accent">Enregistrement Direct</span>
+        </div>
+
+        <!-- Sous-Flag : Scanner vs Saisie Manuelle -->
+        <div class="add-submode-switcher">
+          <span class="subflag-label">MODE D'AJOUT :</span>
+          <div class="subflag-buttons">
+            <button id="subFlagBtnScan" class="subflag-btn active" onclick="setAddSubMode('scan')">
+              📷 Mode Scanner Code-Barres
+            </button>
+            <button id="subFlagBtnManual" class="subflag-btn" onclick="setAddSubMode('manual')">
+              ✍️ Saisie Manuelle Libre
+            </button>
+          </div>
+        </div>
+
+        <!-- 3.A : BLOC SCANNER (Code-barres / QR / OCR) -->
+        <div id="blockScanMode" class="add-subblock">
+          <div class="scanner-viewport">
+            <video id="scannerAddVideo" playsinline autoplay muted style="display:none; width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:1; border-radius:4px;"></video>
+            <div class="scanner-laser" style="z-index:2;"></div>
+            <div class="scanner-reticle" style="z-index:3;">
+              <div class="reticle-corner tl"></div>
+              <div class="reticle-corner tr"></div>
+              <div class="reticle-corner bl"></div>
+              <div class="reticle-corner br"></div>
+              <div class="scanner-icon" id="scannerAddIcon">📷</div>
+              <span class="scanner-hint" id="scannerAddHint">Visée Scanner Optique Active</span>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:center; margin-top:6px; margin-bottom:4px;">
+            <button type="button" id="btnAddCamBtn" class="btn-sm" style="background:rgba(36,161,72,0.2); border:1px solid #24a148; color:#defbe6; padding:5px 12px; font-weight:600; border-radius:4px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;" onclick="toggleCameraScanner('add')">
+              📷 Activer la Caméra PC
+            </button>
+          </div>
+          <div id="addScanCameraFeedback" style="font-size:11px; color:#a8a8a8; text-align:center; margin-bottom:6px; font-style:italic; display:none;"></div>
+
+          <!-- Douchette USB / Emulateur Input -->
+          <div class="scanner-input-bar">
+            <input type="text" id="barcodeScanInput" placeholder="Bip douchette USB ou coller code EAN..." onkeydown="handleBarcodeKeyDown(event)">
+            <button class="btn-scan-action" onclick="simulateBarcodeScan('custom')">⚡ Bip</button>
+          </div>
+
+          <!-- Scénarios Rapides de Scan pour la Démo (1-Clic) -->
+          <div class="scan-presets">
+            <span class="scan-presets-title">🏷️ Préréglages Scan Rapide (1-Clic Démo) :</span>
+            <div class="scan-preset-grid">
+              <button type="button" class="btn-preset-scan" onclick="simulateBarcodeScan('18650-LG')">
+                🔋 Cellule 18650 LG 3000mAh
+              </button>
+              <button type="button" class="btn-preset-scan" onclick="simulateBarcodeScan('PB-IP5328')">
+                ⚡ Power Bank IP5328P 18W
+              </button>
+              <button type="button" class="btn-preset-scan" onclick="simulateBarcodeScan('BMS-6S24V')">
+                🛡️ Carte BMS 6S 24V 30A
+              </button>
+              <button type="button" class="btn-preset-scan" onclick="simulateBarcodeScan('ESP32-CAM')">
+                📡 Module Caméra ESP32-CAM
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.B : FORMULAIRE D'ENREGISTREMENT DU PRODUIT -->
+        <div id="blockAddForm" class="add-form-container">
+          <div class="form-title-row">
+            <h4>📋 Fiche d'Enregistrement du Composant</h4>
+            <span id="scanStatusBadge" class="badge-scan-ready">✍️ Prêt pour saisie</span>
+          </div>
+
+          <form id="newProductForm" onsubmit="handleNewProductSubmit(event)">
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="addProdRef">Référence (Unique) *</label>
+                <input type="text" id="addProdRef" placeholder="ex: REF-BAT-LG3000" required>
+              </div>
+              <div class="form-group">
+                <label for="addProdPrice">Prix Unitaire (€ HT) *</label>
+                <input type="number" step="0.05" id="addProdPrice" placeholder="4.50" value="4.50" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="addProdDesignation">Désignation Complète *</label>
+              <input type="text" id="addProdDesignation" placeholder="ex: Cellule Li-Ion LG HG2 18650 3000mAh 20A" required>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="addProdQty">Quantité Initiale *</label>
+                <input type="number" id="addProdQty" value="30" min="0" required>
+              </div>
+              <div class="form-group">
+                <label for="addProdThreshold">Seuil d'Alerte *</label>
+                <input type="number" id="addProdThreshold" value="15" min="1" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="addProdLocation">Emplacement Magasin *</label>
+              <input type="text" id="addProdLocation" value="Allée A - Bacs Cellules 04" required>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="addProdSupplier">Fournisseur Agréé</label>
+                <input type="text" id="addProdSupplier" value="EVE Energy Supply Europe">
+              </div>
+              <div class="form-group">
+                <label for="addProdEmail">Email Fournisseur</label>
+                <input type="email" id="addProdEmail" value="sales@eve-battery-eu.com">
+              </div>
+            </div>
+
+            <div class="form-actions-row">
+              <button type="submit" id="btnSubmitAddProduct" class="btn-submit-product">
+                💾 Enregistrer le Produit
+              </button>
+              <button type="button" class="btn-reset-form" onclick="resetAddProductForm()">
+                🔄 Effacer
+              </button>
+            </div>
+
+            <div id="addProductAlertMsg" class="add-product-alert" style="display:none;"></div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Bouton Afficher/Masquer Graphiques Déplacés à Gauche (Réservé Admin) -->
+      <div class="charts-toggle-row admin-only-feature">
+        <button id="btnToggleCharts" class="btn-toggle-charts" onclick="toggleChartsDisplay()">
+          <span id="chartsToggleIcon">📊</span> <span id="chartsToggleText">Afficher le Graphique de Santé</span>
+        </button>
+        <span class="badge-charts-mode">Donut Santé</span>
+      </div>
+
+      <!-- Graphiques Déplacés à Gauche (Réservé Admin) -->
+      <div id="chartsContainer" class="charts-section admin-only-feature" style="display:none;">
+        <div class="charts-header">
+          <h3>📊 Santé de l'Inventaire</h3>
+          <span class="chip chip-accent">Temps Réel</span>
+        </div>
+        <div class="charts-grid-left">
+          <div class="chart-card chart-card-donut">
+            <h4>Santé Globale des Stocks</h4>
+            <div class="canvas-wrapper-left donut-wrapper">
+              <canvas id="stockDonutChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- watsonx.governance Factsheets Card -->
+      <div class="governance-card">
+        <div class="governance-header">
+          <h3>🛡️ watsonx.governance Factsheets</h3>
+          <span class="badge badge-gov-active">Actif</span>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <span class="metric-label">Fidélité</span>
+            <span id="faithfulnessScore" class="metric-value text-green">99.6 %</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Latence</span>
+            <span id="latencyScore" class="metric-value">18 ms</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Granite Guardian</span>
+            <span id="guardianStatus" class="metric-value text-blue">READ-ONLY</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Injections / PII</span>
+            <span class="metric-value text-green">Protégé</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column: Assistant Output & Central Inventory Table -->
+    <section class="panel execution-panel">
+      
+      <!-- Agent Execution Terminal / Output -->
+      <div class="panel-header">
+        <h2>⚡ Assistant Intelligent & Synthèse Vocale</h2>
+        <button id="ttsReplayBtn" class="btn-sm" style="display:none;" onclick="replayAudio()">🔊 Réécouter la voix</button>
+      </div>
+
+      <!-- Spoken Assistant Answer -->
+      <div class="response-card">
+        <div class="response-title">
+          <span class="robot-icon">🤖</span>
+          <strong>Synthèse Vocale & Réponse Agent :</strong>
+        </div>
+        <div id="spokenResponseText" class="spoken-text">
+          En attente d'une commande vocale ou de la sélection d'un scénario ci-contre...
+        </div>
+      </div>
+
+      <!-- Collapsible SQL Terminal (Réservé Admin) -->
+      <div id="sqlToggleRow" class="sql-toggle-row admin-only-feature">
+        <button id="btnToggleSql" class="btn-toggle-sql admin-only-feature" onclick="toggleSqlDisplay()">
+          <span id="sqlToggleIcon">👁️</span> <span id="sqlToggleText">Afficher la Requête & Analyse (Mode Admin)</span>
+        </button>
+        <span class="badge-sql-mode admin-only-feature">Accès Sécurisé en Lecture</span>
+      </div>
+
+      <div id="sqlTerminalContainer" class="code-terminal admin-only-feature" style="display:none;">
+        <div class="terminal-bar">
+          <span class="terminal-dot dot-red"></span>
+          <span class="terminal-dot dot-yellow"></span>
+          <span class="terminal-dot dot-green"></span>
+          <span class="terminal-title">Requête Générée (IBM watsonx.ai Granite 3.0)</span>
+        </div>
+        <pre><code id="sqlCodeDisplay">-- En attente de la commande vocale...</code></pre>
+      </div>
+
+      <!-- Real-time Stocks Dashboard -->
+      <div class="inventory-section">
+        <div class="inventory-header">
+          <div>
+            <h3>📦 Inventaire Central : Catalogue des Composants</h3>
+            <div class="table-click-hint">💡 Cliquer sur un composant pour voir sa fiche & photo</div>
+          </div>
+          <div style="display:flex; gap:6px;">
+            <button class="btn-refresh" style="background:rgba(15,98,254,0.18); border-color:var(--ibm-blue); color:#fff;" onclick="setInteractionMode('add')" title="Ajouter ou scanner un nouveau composant">➕ Nouveau / Scanner</button>
+            <button class="btn-refresh" onclick="loadStockData()">🔄 Actualiser</button>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="stock-table">
+            <thead>
+              <tr>
+                <th>Réf</th>
+                <th>Désignation de l'Article</th>
+                <th>Stock</th>
+                <th>Seuil</th>
+                <th>Emplacement</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody id="stockTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination Controls Bar (10, 25, 50) -->
+        <div class="table-pagination-bar">
+          <div class="pagination-info">
+            <span id="paginationRangeText" class="pagination-range-badge">Affichage 1 à 10 sur 35 articles</span>
+            <div class="page-size-selector">
+              <label for="pageSizeSelect">Par page :</label>
+              <select id="pageSizeSelect" class="page-size-dropdown" onchange="changePageSize(this.value)">
+                <option value="10" selected>10 par page</option>
+                <option value="25">25 par page</option>
+                <option value="50">50 par page</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="pagination-nav">
+            <button id="btnPrevPage" class="btn-page-nav" onclick="changePage(-1)" title="Page précédente">◀ Précédent</button>
+            <div id="paginationPageNumbers" class="page-numbers-group">
+              <!-- Dynamically populated page buttons (1, 2, 3...) -->
+            </div>
+            <button id="btnNextPage" class="btn-page-nav" onclick="changePage(1)" title="Page suivante">Suivant ▶</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Restocking Email Tool Modal -->
+  <div id="emailModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>✉️ Déclenchement de l'Outil SMTP (Tool Calling)</h3>
+        <button class="modal-close" onclick="closeEmailModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="email-field">
+          <label>Destinataire (Fournisseur) :</label>
+          <input type="text" id="emailTo" readonly>
+        </div>
+        <div class="email-field">
+          <label>Objet :</label>
+          <input type="text" id="emailSubject" readonly>
+        </div>
+        <div class="email-field">
+          <label>Corps du Message Généré :</label>
+          <textarea id="emailBody" rows="5" readonly></textarea>
+        </div>
+        <div class="audit-note">
+          🔒 <strong>Contrôle watsonx.governance</strong> : Validation humaine requise (Human-in-the-Loop) avant transmission réseau.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeEmailModal()">Annuler</button>
+        <button id="sendEmailConfirmBtn" class="btn btn-primary" onclick="confirmSendEmail()">✅ Valider et Envoyer l'Email</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Detail & Real Photo Modal -->
+  <div id="productDetailModal" class="modal-overlay" style="display:none;" onclick="if(event.target===this) closeProductModal()">
+    <div class="product-modal-card">
+      <div class="product-modal-header">
+        <h3 id="modalProductHeader">🔬 Fiche Technique Composant</h3>
+        <button class="modal-close" onclick="closeProductModal()">&times;</button>
+      </div>
+      <div class="product-modal-body">
+        <div class="product-detail-layout">
+          <!-- Image Container -->
+          <div class="product-image-container">
+            <img id="modalProductImg" src="" alt="Photo Composant" class="product-detail-img" onerror="this.onerror=null; this.src='/images/REF-LI-18650.jpg';">
+            <span id="modalImgBadge" class="product-img-badge">🌐 Source vérifiée</span>
+          </div>
+          <!-- Specs & Info -->
+          <div class="product-specs-card">
+            <span id="modalProductRef" class="product-ref-pill">REF-XXXX</span>
+            <div id="modalProductTitle" class="product-title-large">Désignation du composant</div>
+            
+            <div class="spec-grid">
+              <div class="spec-item">
+                <span class="spec-label">Stock Réel</span>
+                <span id="modalProductStock" class="spec-value">0 u.</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Seuil Critique</span>
+                <span id="modalProductThreshold" class="spec-value">0 u.</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Prix Unitaire</span>
+                <span id="modalProductPrice" class="spec-value">0.00 €</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Emplacement</span>
+                <span id="modalProductLocation" class="spec-value">Allée A</span>
+              </div>
+            </div>
+
+            <!-- Tech Specification Snippet -->
+            <div class="spec-grid" style="grid-template-columns: 1fr;">
+              <div class="spec-item">
+                <span class="spec-label">Caractéristiques Électroniques</span>
+                <span id="modalProductTechSpecs" class="spec-value" style="font-size: 11px; font-weight: 400; color: #c6c6c6;">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Purchase & Restock Control Card -->
+        <div class="product-purchase-box">
+          <div class="purchase-box-header">
+            <span class="purchase-box-title">🛒 Passer Commande / Réapprovisionnement Immédiat</span>
+            <span class="purchase-box-badge">Bon de Commande IBM</span>
+          </div>
+
+          <div class="purchase-controls-row">
+            <div class="qty-selector-group">
+              <label for="purchaseQtyInput">Quantité à commander :</label>
+              <div class="qty-input-stepper">
+                <button type="button" class="btn-qty-step" onclick="adjustPurchaseQty(-10)">-10</button>
+                <button type="button" class="btn-qty-step" onclick="adjustPurchaseQty(-1)">-1</button>
+                <input type="number" id="purchaseQtyInput" value="25" min="1" max="1000" oninput="updatePurchaseTotal()">
+                <button type="button" class="btn-qty-step" onclick="adjustPurchaseQty(1)">+1</button>
+                <button type="button" class="btn-qty-step" onclick="adjustPurchaseQty(10)">+10</button>
+                <button type="button" class="btn-qty-step" onclick="adjustPurchaseQty(50)">+50</button>
+              </div>
+            </div>
+
+            <div class="purchase-total-card">
+              <span class="total-label">Montant Total HT :</span>
+              <span id="purchaseTotalPrice" class="total-amount">0.00 €</span>
+              <small id="purchaseUnitPriceNote" class="unit-price-note">(0.00 € / unité)</small>
+            </div>
+          </div>
+
+          <!-- Purchase Action Buttons -->
+          <div class="purchase-actions-row">
+            <button id="btnConfirmPurchase" class="btn-action-buy" onclick="confirmPurchaseAction()">
+              🛒 Confirmer l'Achat Immédiat (Mise à jour du Stock)
+            </button>
+            <button id="modalRestockBtn" class="btn-action-email" onclick="triggerDirectRestockFromModal()">
+              ✉️ Demander un Réapprovisionnement
+            </button>
+          </div>
+
+          <div id="purchaseFeedbackMsg" class="purchase-feedback" style="display:none;"></div>
+        </div>
+
+        <!-- Supplier Info -->
+        <div class="product-supplier-box">
+          <div class="product-supplier-info">
+            <span style="color: var(--text-muted); font-size: 10px; text-transform: uppercase;">Fournisseur Agréé IBM Supply Chain</span>
+            <strong id="modalProductSupplier" style="color: #fff; font-size: 12px;">Shenzhen PowerTech Electronics Ltd</strong>
+            <span id="modalProductSupplierEmail" style="color: var(--ibm-cyan); font-family: 'IBM Plex Mono', monospace; font-size: 11px;">orders@supplier.com</span>
+          </div>
+          <div class="supplier-delivery-badge">
+            ⏱️ Livraison : <strong>2-4 j. ouvrés</strong>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="padding: 10px 16px; justify-content: space-between;">
+        <span style="font-size:11px; color:var(--text-muted);">Opérateur : <strong style="color:var(--text-primary);">Youness ABACH</strong> (Consultant IA)</span>
+        <button class="btn btn-secondary" onclick="closeProductModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Chatbot Launcher Button (Bottom-Right) -->
+  <button id="chatbotLauncherBtn" class="chatbot-launcher" onclick="toggleChatbot()" title="Discuter avec l'Assistant IA watsonx">
+    <div class="launcher-pulse"></div>
+    <span class="launcher-icon">🤖</span>
+    <span class="launcher-text">Assistant IA</span>
+    <span class="launcher-status-dot"></span>
+  </button>
+
+  <!-- Floating Chatbot Window / Drawer -->
+  <div id="chatbotWindow" class="chatbot-window" style="display:none;">
+    <div class="chatbot-header">
+      <div class="chatbot-header-left">
+        <div class="chatbot-avatar">🤖</div>
+        <div class="chatbot-header-info">
+          <h4>VoiceStock AI</h4>
+          <span class="chatbot-model-badge">Assistant Stock</span>
+        </div>
+      </div>
+      <div class="chatbot-header-actions">
+        <button class="btn-chat-header" onclick="clearChatHistory()" title="Effacer l'historique">🗑️</button>
+        <button class="btn-chat-header" onclick="toggleChatbot()" title="Fermer le chat">✕</button>
+      </div>
+    </div>
+
+    <!-- Live Sync Alert Badge -->
+    <div class="chatbot-sync-bar">
+      <span>🔄 <strong>Synchro Table Active :</strong> Vos requêtes vocales & textuelles filtrent le tableau en direct.</span>
+    </div>
+
+    <!-- Chat Messages Body -->
+    <div id="chatMessages" class="chatbot-messages">
+      <div class="chat-msg chat-msg-bot">
+        <div class="msg-avatar">🤖</div>
+        <div class="msg-bubble">
+          <p>Bonjour Youness ! Je suis votre assistant VoiceStock AI connecté à l'inventaire en direct.</p>
+          <p>Posez-moi une question par <strong>écrit</strong> ou à la <strong>voix</strong> (via le micro ci-dessous) :</p>
+          <div class="chat-suggestions">
+            <button type="button" class="chat-chip" onclick="sendSuggestedQuery('Combien de cellules lithium 18650 reste-t-il ?')">🔋 Stock 18650</button>
+            <button type="button" class="chat-chip" onclick="sendSuggestedQuery('Quels sont les composants en alerte critique ?')">⚠️ Alertes Critiques</button>
+            <button type="button" class="chat-chip" onclick="sendSuggestedQuery('Affiche tous les modules BMS')">🛡️ Cartes BMS</button>
+            <button type="button" class="chat-chip" onclick="sendSuggestedQuery('Envoie un mail urgent au fournisseur de cellules 18650')">✉️ Restock Urgent</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Input Bar with Voice Microphone -->
+    <div class="chatbot-footer">
+      <div class="chat-input-wrapper">
+        <button id="chatMicBtn" class="btn-chat-mic" onclick="toggleChatVoice()" title="Parler à la voix (Web Speech API)">
+          <svg class="mic-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="22"/>
+          </svg>
+        </button>
+        <input type="text" id="chatInputText" placeholder="Posez une question ou cliquez sur le micro..." onkeydown="handleChatInputKeyDown(event)">
+        <button id="chatSendBtn" class="btn-chat-send" onclick="submitChatQuery()" title="Envoyer le message">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
+      </div>
+      <div id="chatMicListeningBar" class="chat-listening-status" style="display:none;">
+        <span class="listening-pulse"></span> Écoute en cours... Parlez maintenant
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Information Banner (~1cm height / 38px) -->
+  <footer class="app-footer-bar">
+    <div class="footer-segment footer-left">
+      <span class="footer-logo">IBM</span>
+      <span class="footer-badge">Consulting • GenAI Experienced</span>
+      <span class="footer-divider">|</span>
+      <span class="footer-text">Projet : <strong>VoiceStock AI</strong> (Stand & Deliver)</span>
+    </div>
+
+    <div class="footer-segment footer-center">
+      <span class="footer-pill">watsonx.ai • Granite 3.0</span>
+      <span class="footer-pill">Moteur d'Inventaire Haute Performance</span>
+      <span class="footer-pill">Granite Guardian Guardrails</span>
+    </div>
+
+    <div class="footer-segment footer-right">
+      <span class="footer-status-indicator">
+        <span class="pulse-dot"></span> Cluster Actif
+      </span>
+      <span class="footer-divider">|</span>
+      <span class="footer-metric">Factsheets : <strong class="text-green">99.6%</strong></span>
+      <span class="footer-divider">|</span>
+      <span class="footer-version">v1.2.0</span>
+    </div>
+  </footer>
+
+  <script src="app.js?v=20260916_v7"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "_rappel_environnement": "Changez paypal_environment à 'live' pour accepter de vrais paiements",
+  "paypal_environment": "sandbox",
+  "paypal_client_id_sandbox": "ECzPx6dJJPrEJlSPRl8g9aAvTyaJiSA3DueAkUMMjGoeRcIWfKIuH7qxlxj25f4wkrZzTwwSSuKbV-EB",
+  "paypal_client_id_live": "BAA91W5Z3ZSn4DNXdbXCxerJPe5aLDgWaCHi_W0RcitXcDZ22hREQKbwwGJIMmb06o3rehJuBOu7G1d7IM",
+  "stripe_public_key": ""
+}

@@ -1,0 +1,13 @@
+{
+  "name": "mailing-agent",
+  "version": "1.0.0",
+  "description": "Standalone email sending CLI — no server, no tunnel",
+  "main": "send-cli.js",
+  "scripts": {
+    "send": "node send-cli.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "nodemailer": "^6.9.13"
+  }
+}
